@@ -34,4 +34,4 @@ In 3D rendering sometimes it is very important to be abble to repeat a texture s
 *Roughness map, done by hand by an artist on GIMP.*
 
 ![3D Rendering](https://github.com/LuisEduardoR/tileable_texture_and_maps_generator/blob/master/Samples/sample01_artist_render.png)
-*3D rendered materia, made using the tileable texture and its maps, rendered on Unity Engine.*
+*3D rendered material, made using the tileable texture and its maps, rendered on Unity Engine. (OBS: note that Unity uses a different system for roughness map, for information on how to convert roughness map to the map used in Unity check the "TO DO" file in the tutorials folder)*
