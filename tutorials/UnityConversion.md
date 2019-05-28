@@ -1,4 +1,4 @@
-# Converting Roughness to use in Unity
+# Converting Roughness Maps to use in Unity
 
 Unity uses a format in wich the metalicity of a texture is stored in the red channel and the smoothness map (inverted roughness map) is stored on the alpha channel.
 
