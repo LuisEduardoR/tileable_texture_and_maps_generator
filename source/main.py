@@ -67,6 +67,12 @@ def main():
     #   TODO    #
     #           #
 
+    print("# Saving generated images...")
+
+    #           #
+    #   TODO    #
+    #           #
+
     # Stores the start time of the operation.
     start_t = time.time()
 
