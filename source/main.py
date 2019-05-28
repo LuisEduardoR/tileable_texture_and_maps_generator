@@ -49,7 +49,7 @@ def main():
     # Generates the height map.
     height_map = util.level_image(grayscale, 90, 255, 70, 0, 255)
 
-    # Measures the maount of time spent.
+    # Measures the amount of time spent.
     end_t = time.time()
     print("DONE! (Time spent: {:.2f})".format(end_t - start_t));
 
@@ -63,6 +63,16 @@ def main():
 
     print("# (TODO) Generating roughness map...")
 
+    # Stores the start time of the operation.
+    start_t = time.time()
+
+    # Generates the roughness map
+    roughness_map = -util.level_image(grayscale, 110, 210, 120, 50, 230)
+
+    # Measures the amount of time spent.
+    end_t = time.time()
+    print("DONE! (Time spent: {:.2f})".format(end_t - start_t));
+
     #           #
     #   TODO    #
     #           #
@@ -74,7 +84,7 @@ def main():
     imageio.imwrite("grayscale.png", grayscale.astype(np.uint8))
     imageio.imwrite("height.png", height_map.astype(np.uint8))
     # (TODO) Save normal map
-    # (TODO) Save roughness map
+    imageio.imwrite("roughness.png", roughness_map.astype(np.uint8))
 
     # Measures the maount of time spent.
     end_t = time.time()
