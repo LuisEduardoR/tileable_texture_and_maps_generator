@@ -51,9 +51,9 @@ def main():
     out_image = np.zeros(shp, dtype = int)
 
     out_image[:,:,0] = metal
-    out_image[:,:,1] = 0
+    out_image[:,:,1] = 1
     out_image[:,:,2] = 0
-    out_image[:,:,3] = image[:,:,0]
+    out_image[:,:,3] = 1 - image[:,:,0]
 
     # Measures the maount of time spent.
     end_t = time.time()
@@ -69,7 +69,7 @@ def main():
     outname = filename.split('.')[0]
 
      # Saves the output image.
-    imageio.imwrite("{}_unity.png".format(outname), out_image.astype(np.uint8))
+    imageio.imwrite("{}_unity.png".format(outname), out_image.astype(np.uint8), compress_level = 5)
 
     # Measures the amount of time spent.
     end_t = time.time()
