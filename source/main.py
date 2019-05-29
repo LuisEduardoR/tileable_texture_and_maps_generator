@@ -13,8 +13,12 @@ def main():
     if len(sys.argv) != 2:
         print("Usage: program-name filename")
         sys.exit(-1)
+    
+    # Gets the filename from the arguments used when calling the program.
+    filename = sys.argv[1]
 
-    image_path = pathlib.Path('./' + sys.argv[1])
+    # Gets the path to the image.
+    image_path = pathlib.Path('./{}'.format(filename))
 
     if not image_path.exists() or not image_path.is_file():
         print("Input image does not exist!")
@@ -71,24 +75,23 @@ def main():
     end_t = time.time()
     print("DONE! (Time spent: {:.2f})".format(end_t - start_t));
 
-    #           #
-    #   TODO    #
-    #           #
-
     print("# Saving generated images...")
-
-    #           #
-    #   TODO    #
-    #           #
 
     # Stores the start time of the operation.
     start_t = time.time()
 
+    # Gets the name of the to be used for the output image (removes the extension at the end).
+    outname = filename.split('.')[0]
+
+    
     # (TODO) Save tiling texture
-    imageio.imwrite("grayscale.png", grayscale.astype(np.uint8), compress_level=0)
-    imageio.imwrite("height.png", height_map.astype(np.uint8), compress_level=0)
+
+    # Grayscale is an intermediary step that doesn't need to be saved, if you want to uncomment this line.
+    #imageio.imwrite("{}_gray.png".format(outname), out_image.astype(np.uint8), compress_level = 5)
+
+    imageio.imwrite("{}_height.png".format(outname), height_map.astype(np.uint8), compress_level=5)
     # (TODO) Save normal map
-    imageio.imwrite("roughness.png", roughness_map.astype(np.uint8), compress_level=0)
+    imageio.imwrite("{}_rough.png".format(outname), roughness_map.astype(np.uint8), compress_level=5)
 
     # Measures the amount of time spent.
     end_t = time.time()
