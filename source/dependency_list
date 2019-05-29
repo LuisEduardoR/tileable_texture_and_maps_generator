@@ -1,0 +1,15 @@
+This program was developed using Python 3.
+
+The following packages are necessary:
+
+matplotlib
+numpy
+imageio
+
+(The program was verified working with the default versions installed by Pip in 28/05/2019)
+
+This default libraries where also used:
+
+sys
+time
+pathlib
