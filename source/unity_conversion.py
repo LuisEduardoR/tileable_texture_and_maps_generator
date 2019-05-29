@@ -70,7 +70,7 @@ def main():
 
      # Saves the output image.
     imageio.imwrite("{}_unity.png".format(outname), out_image.astype(np.uint8), compress_level = 5)
-
+    
     # Measures the amount of time spent.
     end_t = time.time()
 

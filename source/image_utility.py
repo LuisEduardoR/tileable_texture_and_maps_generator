@@ -3,11 +3,13 @@ import matplotlib as mpl
 import numpy as np
 import imageio
 
+
 def as_monochrome(rgb_image):
 
     hsv_image = mpl.colors.rgb_to_hsv(rgb_image)
 
     return hsv_image[:,:, 2]
+
 
 def gamma_correction (midtone):
 
@@ -28,7 +30,7 @@ def gamma_correction (midtone):
 
 def level_image(gray_scale, in_shadow, in_highlight, midtones, out_shadow, out_highlight):
 
-     # Creates the new image.
+    # Creates the new image.
     leveled_image = gray_scale
 
     # Calculates the gamma correction to be used.
