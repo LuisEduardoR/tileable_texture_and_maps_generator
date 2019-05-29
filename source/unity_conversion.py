@@ -53,7 +53,7 @@ def main():
     out_image[:,:,0] = metal
     out_image[:,:,1] = 0
     out_image[:,:,2] = 0
-    out_image[:,:,3] = image[:,:,0]
+    out_image[:,:,3] = image[:,:]  # Roughness map is grayscale so it doesn't have rgb components
 
     # Measures the maount of time spent.
     end_t = time.time()
@@ -69,7 +69,7 @@ def main():
     outname = filename.split('.')[0]
 
      # Saves the output image.
-    imageio.imwrite("{}_unity.png".format(outname), out_image.astype(np.uint8))
+    imageio.imwrite("{}_unity.png".format(outname), out_image.astype(np.uint8), compress_level=0)
 
     # Measures the amount of time spent.
     end_t = time.time()

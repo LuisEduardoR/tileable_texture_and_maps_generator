@@ -53,21 +53,19 @@ def main():
     end_t = time.time()
     print("DONE! (Time spent: {:.2f})".format(end_t - start_t));
 
-    print("# Saving files...")
-
     print("# (TODO) Generating normal map...")
 
     #           #
     #   TODO    #
     #           #
 
-    print("# (TODO) Generating roughness map...")
+    print("# Generating roughness map...")
 
     # Stores the start time of the operation.
     start_t = time.time()
 
     # Generates the roughness map
-    roughness_map = -util.level_image(grayscale, 110, 210, 120, 50, 230)
+    roughness_map = -util.level_image(grayscale, 120, 255, 100, 30, 200)
 
     # Measures the amount of time spent.
     end_t = time.time()
@@ -87,12 +85,12 @@ def main():
     start_t = time.time()
 
     # (TODO) Save tiling texture
-    imageio.imwrite("grayscale.png", grayscale.astype(np.uint8))
-    imageio.imwrite("height.png", height_map.astype(np.uint8))
+    imageio.imwrite("grayscale.png", grayscale.astype(np.uint8), compress_level=0)
+    imageio.imwrite("height.png", height_map.astype(np.uint8), compress_level=0)
     # (TODO) Save normal map
-    imageio.imwrite("roughness.png", roughness_map.astype(np.uint8))
+    imageio.imwrite("roughness.png", roughness_map.astype(np.uint8), compress_level=0)
 
-    # Measures the maount of time spent.
+    # Measures the amount of time spent.
     end_t = time.time()
     print("DONE! (Time spent: {:.2f})".format(end_t - start_t));
 
