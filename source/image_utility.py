@@ -37,7 +37,7 @@ def level_image(gray_scale, in_shadow, in_highlight, midtones, out_shadow, out_h
     gamma = gamma_correction(midtones)
 
     # Levels the input values.
-    leveled_image = 255 * np.clip((leveled_image - in_shadow) / (float)(in_highlight - in_shadow), 0, 255)
+    leveled_image = np.clip(255 * (leveled_image - in_shadow) / (float)(in_highlight - in_shadow), 0, 255)
 
     # Iterates the grayscale image assigning the leveled values to the new image.
     leveled_image = 255 * np.power((leveled_image / 255.0), gamma)
