@@ -38,8 +38,8 @@ def generate_normal_map(height_map):
     normalized = (height_map.astype(float)) / 255.0
 
     # Calculates the discrite partial derivatives in x and y.
-    del_x = np.roll(normalized, 1, axis=0) - np.roll(normalized, -1, axis=0)
-    del_y = np.roll(normalized, 1, axis=1) - np.roll(normalized, -1, axis=1)
+    del_x = np.roll(normalized, -1, axis=0) - np.roll(normalized, 1, axis=0)
+    del_y = np.roll(normalized, -1, axis=1) - np.roll(normalized, 1, axis=1)
 
     # Calculates the normal vector to the image and saves its XYZ coordinates to the RGB channels.
     normal = np.zeros((height_map.shape[0], height_map.shape[1], 3))

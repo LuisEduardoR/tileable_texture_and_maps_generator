@@ -53,7 +53,7 @@ def main():
     out_image[:,:,0] = metal
     out_image[:,:,1] = 1
     out_image[:,:,2] = 0
-    out_image[:,:,3] = 1 - image[:,:,0]
+    out_image[:,:,3] = 1 - image[:,:]
 
     # Measures the maount of time spent.
     end_t = time.time()
