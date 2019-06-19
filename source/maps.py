@@ -18,7 +18,6 @@ def generate_height_map(gray_scale, height):
     # Select in_shadow as the first value to have a frequency equal or greater to hist_mean
     in_shadow = 0
     for i in range(256):
-        print(histogram[i])
         if histogram[i] >= hist_mean:
             in_shadow = i
             break

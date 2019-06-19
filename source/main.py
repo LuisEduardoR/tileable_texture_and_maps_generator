@@ -92,7 +92,7 @@ def main():
     end_t = time.time()
     print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t));
 
-    print("\033[0;33;40m# (TODO) Generating normal map...")
+    print("\033[0;33;40m# Generating normal map...")
 
     # Stores the start time of the operation.
     start_t = time.time()
