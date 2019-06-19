@@ -4,10 +4,11 @@
 
 import numpy as np
 
+
 # Returns a monochrome version of an image.
 def as_monochrome(rgb_image):
-
-    return  (0.229 * rgb_image[:,:,0] + 0.587 * rgb_image[:,:,1] + 0.114 * rgb_image[:,:,2])
+    gray_scale = 0.229 * rgb_image[:, :, 0] + 0.587 * rgb_image[:, :, 1] + 0.114 * rgb_image[:, :, 2]
+    return np.rint(gray_scale).astype(np.uint8)
 
 
 # Calculates the gamma correction to be used.
@@ -67,3 +68,12 @@ def get_image_std(image):
 
     # Returns the standard deviation between the differences.
     return diff.std()
+
+
+def get_image_histogram(gray_scale, level_count):
+    histogram = np.zeros(level_count).astype(np.uint8)
+
+    for i in range(level_count):
+        histogram[i] += np.where(gray_scale == i)[0].shape[0]
+
+    return histogram
