@@ -26,7 +26,7 @@ def power_of_two_min_std(image):
     res = int(2**r)
 
     # If the image is already power of two returns it.
-    if image.shape[0] == image.shape[1] && image.shape[0] == res:
+    if image.shape[0] == image.shape[1] and image.shape[0] == res:
         return image
 
     # Gets square slices with resolution 'res' from the original image 4 corners and center.

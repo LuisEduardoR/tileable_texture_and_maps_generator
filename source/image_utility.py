@@ -2,54 +2,51 @@
 
 # Contains general functions used to edit images.
 
-import matplotlib as mpl
 import numpy as np
 
 # Returns a monochrome version of an image.
 def as_monochrome(rgb_image):
 
-    hsv_image = mpl.colors.rgb_to_hsv(rgb_image)
-
-    return hsv_image[:,:, 2]
+    return  (0.229 * rgb_image[:,:,0] + 0.587 * rgb_image[:,:,1] + 0.114 * rgb_image[:,:,2])
 
 
-# Performs gamma correction on a image.
-def gamma_correction (midtone):
+# Calculates the gamma correction to be used.
+def get_gamma (midtone):
 
-    gamma = 1
+    gamma = 1.0
 
-    midtone_normalized = midtone / 255
+    midtone_normalized = midtone / 255.0
 
-    if midtone < 128:
-        midtone_normalized = midtone_normalized * 2
-        gamma = 1 + ( 9 * ( 1 - midtone_normalized ) )
+    if midtone < 128.0:
+        midtone_normalized = midtone_normalized * 2.0
+        gamma = 1.0 + ( 9.0 * ( 1.0 - midtone_normalized ) )
         gamma = min( gamma, 9.99 )
-    elif midtone > 128:
-        midtone_normalized = ( midtone_normalized * 2 ) - 1
-        gamma = 1 - midtone_normalized
+    elif midtone > 128.0:
+        midtone_normalized = ( midtone_normalized * 2.0 ) - 1.0
+        gamma = 1.0 - midtone_normalized
         gamma = max( gamma, 0.01 )
 
-    return (1 / gamma)
+    return (1.0 / gamma)
 
 # Performs the 'levels' operation that can be found on programs like GIMP or Photoshop on an image.
 def level_image(gray_scale, in_shadow, in_highlight, midtones, out_shadow, out_highlight):
 
     # Creates the new image.
-    leveled_image = gray_scale
+    leveled_image = gray_scale.astype(float)
 
-    # Calculates the gamma correction to be used.
-    gamma = gamma_correction(midtones)
+    # Gets the gama value.
+    gamma = get_gamma(midtones)
 
     # Levels the input values.
-    leveled_image = np.clip(255 * (leveled_image - in_shadow) / (float)(in_highlight - in_shadow), 0, 255)
+    leveled_image = np.clip(255.0 * (leveled_image - in_shadow) / (float)(in_highlight - in_shadow), 0.0, 255.0)
 
     # Iterates the grayscale image assigning the leveled values to the new image.
-    leveled_image = 255 * np.power((leveled_image / 255.0), gamma)
+    leveled_image = 255.0 * np.power((leveled_image / 255.0), gamma)
 
     # Levels the output values.
     leveled_image = ((leveled_image / 255.0) * (float)(out_highlight - out_shadow )) + out_shadow
                 
-    return leveled_image
+    return np.clip(leveled_image, 0.0, 255.0).astype(np.uint8)
 
 # Gets the standard deviation between the pixels of an image.
 def get_image_std(image):
