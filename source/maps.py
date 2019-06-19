@@ -2,7 +2,6 @@
 
 # Contains functions used to generate the different texture maps.
 
-import matplotlib.pyplot as plt
 import image_utility as util
 import numpy as np
 
@@ -11,8 +10,10 @@ import numpy as np
 def generate_height_map(gray_scale, height):
     histogram = util.get_image_histogram(gray_scale, 256)
 
+    # Calculate the mean of the histogram's frequencies
     hist_mean = np.mean(histogram)
 
+    # Select in_shadow as the first value to have a frequency equal or greater to hist_mean
     in_shadow = 0
     for i in range(256):
         print(histogram[i])
@@ -20,15 +21,12 @@ def generate_height_map(gray_scale, height):
             in_shadow = i
             break
 
+    # Select in_highlight as the last value to have a frequency equal or greater to hist_mean
     in_highlight = 0
     for i in reversed(range(256)):
         if histogram[i] >= hist_mean:
             in_highlight = i
             break
-
-    print("Histogram mean: {}".format(hist_mean))
-    print("in_shadow: {}".format(in_shadow))
-    print("in_highlight: {}".format(in_highlight))
 
     return util.level_image(gray_scale, in_shadow, in_highlight, int(255.0 * 0.95 * height), 0, 255)
 
