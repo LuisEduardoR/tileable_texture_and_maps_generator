@@ -57,16 +57,19 @@ def main():
         print("\033[1;31;40m\tInvalid roughness value! (Must be between 0.0 and 1.0 but was {})\033[0;37;40m".format(img_roughness))
         sys.exit(-1)
 
-    print("\033[0;33;40m# (TODO) Tiling image...")
+    # Stores the start time of the program.
+    start_t_total = time.time()
+
+    print("\033[0;33;40m# Tiling the image...")
 
     # Stores the start time of the operation.
     start_t = time.time()
 
-    tile_image = tiling.tile_image(image)
+    tile_image = tiling.get_tile(image)
 
     # Measures the amount of time spent.
     end_t = time.time()
-    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t));
+    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t))
 
     print("\033[0;33;40m# Generating grayscale...")
 
@@ -78,7 +81,7 @@ def main():
 
     # Measures the amount of time spent.
     end_t = time.time()
-    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t));
+    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t))
 
     print("\033[0;33;40m# Generating height map...")
 
@@ -90,7 +93,7 @@ def main():
 
     # Measures the amount of time spent.
     end_t = time.time()
-    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t));
+    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t))
 
     print("\033[0;33;40m# Generating normal map...")
 
@@ -102,7 +105,7 @@ def main():
 
     # Measures the amount of time spent.
     end_t = time.time()
-    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t));
+    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t))
 
     print("\033[0;33;40m# Generating roughness map...")
 
@@ -114,7 +117,7 @@ def main():
 
     # Measures the amount of time spent.
     end_t = time.time()
-    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t));
+    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t))
 
     print("\033[0;33;40m# Saving generated images...")
 
@@ -126,7 +129,7 @@ def main():
 
     imageio.imwrite("{}_tile.png".format(outname), tile_image.astype(np.uint8), compress_level=5)
 
-    # Grayscale is an intermediary step that doesn't need to be saved, if you want to uncomment this line.
+    # Grayscale is an intermediary step that doesn't need to be saved, if you want to, uncomment this line.
     # imageio.imwrite("{}_gray.png".format(outname), grayscale.astype(np.uint8), compress_level=5)
 
     imageio.imwrite("{}_height.png".format(outname), height_map.astype(np.uint8), compress_level=5)
@@ -135,7 +138,11 @@ def main():
 
     # Measures the amount of time spent.
     end_t = time.time()
-    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})\033[0;37;40m".format(end_t - start_t));
+    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})\033[0;37;40m".format(end_t - start_t))
+
+    # Measures the amount of time spent on the entire program.
+    end_t_total = time.time()
+    print("\033[1;32;40mDONE! (Time spent: {:.2f})".format(end_t_total - start_t_total));
 
 
 main()

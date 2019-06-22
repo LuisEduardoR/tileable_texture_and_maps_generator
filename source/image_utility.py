@@ -4,7 +4,6 @@
 
 import numpy as np
 
-
 # Returns a monochrome version of an image.
 def as_monochrome(rgb_image):
     gray_scale = 0.229 * rgb_image[:, :, 0] + 0.587 * rgb_image[:, :, 1] + 0.114 * rgb_image[:, :, 2]

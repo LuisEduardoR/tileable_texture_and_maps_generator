@@ -9,7 +9,7 @@ Made as final assigment for SCC0251 Image Processing course of ICMC-USP on 2019.
 
 ---
 
-# Generating Tileable Textures for 3D Rendering.
+# Generating Tileable Textures and Texture Maps for 3D Rendering.
 
 ## Abstract: 
 

@@ -1,0 +1,12 @@
+sample 01:
+h:	0.1	r:	0.7
+sample 02:
+h:	0.7	r:	0.4
+sample 03:
+h:	0.1	r:	0.5
+sample 04:
+h:	0.5	r:	0.2
+sample 05:
+h:	0.7	r:	0.5
+sample 06:
+h:	0.8	r:	0.8
