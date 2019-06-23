@@ -46,6 +46,12 @@ In 3D rendering sometimes it is very important to be abble to repeat a texture s
 
 ---
 
+#### Samples:
+
+The samples used for the program can be found on the "samples" folder, they are images taken by the group of various surfaces, some have received post-processing in the form of contrast and color manipulation to create a nicer appearence. 
+
+---
+
 ### Tiling the Texture:
 
 The tiling process is probably one of the hardest parts of the project, so, due to lack of time, a very simple method was opted for. What is being done is the slicing of the original image into a version with width and height being a power of two, it was decided to make all textures squares for now. The slice is selected between the four corners plus the center of the image using the standard deviation between the channel value differences and the channel mean as a criteria, the one with the minimum value is selected. This is done in an attempt to get the slice that would be, most of the time, easier to tile. Using the slice with the minimum standard deviation, generally the part of the image with the least texture and lighting variance, should allow for making tiles with better final appearence, as, though the image provided should be already pretty uniform, this would eliminate most of the remaining outlier regions. Them, for each axis of the texture the following proccess is done: first, a mask is generated with a gradual fade towards the center of the image; second, a multiplier based on the grayscale of the image is added to the mask, with the objective of trying to better keep details in the faded region; third the image is rolled along the axis by 50% of it's size, this makes the image tileable on the axis it's was rolled on, but ends up moving the original seam between the textures to the middle of the image; finally, the produced mask is applied to the original texture and the result is used to cover the seam from the step before. After repeating this proccess to both axis the result will be a completly tileable texture.
@@ -104,12 +110,12 @@ The final result turned out really well for most textures given the simplicity o
 But for others some problems are apparent, the method choosen for the tiling proccess tends to produce very visible duplication of some details from the image and also doesn't generate good results for textures with very apparent geometrical patterns.
 
 ![Generated Height Map](https://github.com/LuisEduardoR/tileable_texture_and_maps_generator/blob/master/results/texture_sample03_tile.png)
-*Tileable texure generated from the samples/texture_sample03.jpg, note that the squares do not match what would be expected.*
+*Tileable texure generated from samples/texture_sample03.jpg, note that the squares do not match what would be expected.*
 
 Another problem is the method used to select the best slice, though apparently working with most of the samples, sample 07 caused trouble, making the program select what an artist would consider the worst slice possible, what indicates a better selection method should be considered.
 
 ![Generated Height Map](https://github.com/LuisEduardoR/tileable_texture_and_maps_generator/blob/master/results/texture_sample07_best_slice.png)
-*Selected "best" slice from the samples/texture_sample07.jpg, note the inclusion of what should have been considered an anomaly in the slice.*
+*Selected "best" slice from samples/texture_sample07.jpg, note the inclusion of what should have been considered an anomaly in the slice.*
 
 The texture map generation ended up being the most successfull part of the program, only possible needing more customization to allow better handling of some cases that would be ambigous for probably most algorithmic decisions. The tiling proccess also could use customization as well, allowing the user to select the axis in which the image will be tiled, as some textures are only meant to be tileable in one direction, the option to completly skip the tiling proccess if only the texture maps are desired would also be a good addition. Ultimatly, the program serves it's purpose for most cases that would, in a real situation, only take artist time for pretty simple handwork during a 3d render production, and with some improvements, might be usable even for some trickier situations, what is a pretty favorable result.
 

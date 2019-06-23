@@ -103,7 +103,7 @@ def main():
     start_t = time.time()
 
     # Generates the roughness map
-    normal_map = maps.generate_normal_map(grayscale)
+    normal_map = maps.generate_normal_map(height_map)
 
     # Measures the amount of time spent.
     end_t = time.time()
