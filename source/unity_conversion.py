@@ -14,34 +14,43 @@ import image_utility as util
 
 def main():
 
-    # Prints a messagge if the program was incorrectly used.
-    if len(sys.argv) != 2:
-        print("Usage: <program name> <file name>")
-        sys.exit(-1)
-
-    print("\n# This program will convert a roughness map into a texture that can be directly used in Unity. #\n")
-
-    # Gets the filename from the arguments used when calling the program.
-    filename = sys.argv[1]
+    print("\033[1;37;40m- Enter the filename:\033[0;37;40m")
+    
+    # Gets the filename .
+    filename = str(input()).rstrip()
 
     # Gets the path to the image.
     image_path = pathlib.Path('./{}'.format(filename))
 
-    # Verifies if the image exists.
+    print("\033[0;33;40m# Opening image...")
+
+    # Verifies if the path provided leads to a valid file.
     if not image_path.exists() or not image_path.is_file():
-        print("Input image does not exist!")
+        print("\033[1;31;40m\tInput image doesn't exist!\033[0;37;40m")
         sys.exit(-1)
 
     # Opens the image.
     image = imageio.imread(image_path)
 
+    print("\033[1;32;40m\tImage opened succesfully!")
+
+    # Gets the user parameters for the map generation.
+
     # Receives how metallic should the texture be.
-    print(" > Enter how metallic is your texture (0 = not metallic, 255 = full metallic):")
-    metal = int(input())
+    print("\033[1;37;40m- Enter how metallic is your texture (0.0 - 1.0):\033[0;37;40m")
+    metal = float(input())
 
-    metal = np.clip(metal, 0, 255)
+    # Gives an error if an invalid img_height was passed.
+    if metal < 0 or metal > 1:
+        print("\033[1;31;40m\tInvalid mettalic value! (Must be between 0.0 and 1.0 but was {})\033[0;37;40m".format(metal))
+        sys.exit(-1)
 
-    print("\n# Converting...")
+    metal = int(metal * 255)
+
+    # Stores the start time of the program.
+    start_t_total = time.time()
+
+    print("\033[0;33;40m# Converting...")
 
     # Stores the start time of the operation.
     start_t = time.time()
@@ -58,9 +67,9 @@ def main():
     # Measures the maount of time spent.
     end_t = time.time()
 
-    print("# DONE! (Time spent: {:.2f})".format(end_t - start_t))
+    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t))
 
-    print("# Saving file...")
+    print("\033[0;33;40m# Saving generated image...")
 
     # Stores the start time of the operation.
     start_t = time.time()
@@ -74,7 +83,10 @@ def main():
     # Measures the amount of time spent.
     end_t = time.time()
 
-    print("# DONE! (Time spent: {:.2f})\n".format(end_t - start_t))
+    print("\033[1;32;40m\tDONE! (Time spent: {:.2f})".format(end_t - start_t))
 
+    # Measures the amount of time spent on the entire program.
+    end_t_total = time.time()
+    print("\033[1;32;40mDONE! (Time spent: {:.2f})\033[0;37;40m".format(end_t_total - start_t_total));
 
 main()

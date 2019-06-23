@@ -10,3 +10,5 @@ sample 05:
 h:	0.7	r:	0.5
 sample 06:
 h:	0.8	r:	0.8
+sample 07:
+h:	0.9	r:	0.4

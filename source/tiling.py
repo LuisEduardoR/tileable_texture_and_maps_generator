@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# Contains functions related to the tiling proccess.
+
 import numpy as np
 import imageio
 

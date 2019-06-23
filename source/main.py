@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# Contains the main execution of the program.
+
 import numpy as np
 import imageio
 import pathlib
@@ -142,7 +144,7 @@ def main():
 
     # Measures the amount of time spent on the entire program.
     end_t_total = time.time()
-    print("\033[1;32;40mDONE! (Time spent: {:.2f})".format(end_t_total - start_t_total));
+    print("\033[1;32;40mDONE! (Time spent: {:.2f})\033[0;37;40m".format(end_t_total - start_t_total));
 
 
 main()

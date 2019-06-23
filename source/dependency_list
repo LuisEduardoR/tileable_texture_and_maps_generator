@@ -4,7 +4,7 @@ The following packages are necessary:
 - numpy
 - imageio
 
-(The program was verified working with the default versions installed by Pip in 18/06/2019)
+(The program was verified working with the default versions installed by Pip in 23/06/2019)
 
 This default libraries where also used:
 - sys
