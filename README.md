@@ -56,6 +56,9 @@ The tiling process is probably one of the hardest parts of the project, so, due 
 ![Generated Height Map](https://github.com/LuisEduardoR/tileable_texture_and_maps_generator/blob/master/results/texture_sample01_tile.png)
 *Tileable texure generated from the samples/texture_sample01.jpg slice that better fitted the criteria.*
 
+![Generated Height Map](https://github.com/LuisEduardoR/tileable_texture_and_maps_generator/blob/master/results/texture_sample01_tiling.png)
+*Multiple tiles of the image next to each other.*
+
 ---
 
 #### Grayscale Conversion:
@@ -100,7 +103,7 @@ The final result turned out really well for most textures given the simplicity o
 
 But for others some problems are apparent, the method choosen for the tiling proccess tends to produce very visible duplication of some details from the image and also doesn't generate good results for textures with very apparent geometrical patterns.
 
-![Generated Height Map](https://github.com/LuisEduardoR/tileable_texture_and_maps_generator/blob/master/results/texture_sample01_tile.png)
+![Generated Height Map](https://github.com/LuisEduardoR/tileable_texture_and_maps_generator/blob/master/results/texture_sample03_tile.png)
 *Tileable texure generated from the samples/texture_sample03.jpg, note that the squares do not match what would be expected.*
 
 Another problem is the method used to select the best slice, though apparently working with most of the samples, sample 07 caused trouble, making the program select what an artist would consider the worst slice possible, what indicates a better selection method should be considered.

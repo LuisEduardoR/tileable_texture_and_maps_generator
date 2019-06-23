@@ -4,4 +4,4 @@ The .zip present on this directory contains an Unity project for use when testin
 
     Note that this rendering test is very graphically intensive.
     
-    DirectX 11, 12 or Vulkan API is necessary for running on Windows, Vulkan API is necessary for running on Linux 
+    DirectX 11, 12 or Vulkan API is necessary for running on Windows, Vulkan API is necessary for running on Linux.

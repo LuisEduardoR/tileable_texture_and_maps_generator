@@ -6,14 +6,14 @@ A python 3 program to generate this images automatically is provided in the sour
 
 To run the program execute:
 
-    python unity_conversion.py <roughness map file name>
+    python unity_conversion.py
 
-Them you will be asked for how metallic is your texture (0 = not metallic, 255 = full metallic).
+Them, when asked, provided the roughness map file name.
 
-After entering this value the program will execute the conversion.
+Follow the remaining instructions from the program.
 
 The generated image will be saved as:
 
-    <roughness map file name>_unity.png
+    <roughness map file name provided>_unity.png
 
 Them you can just import the file into Unity.
