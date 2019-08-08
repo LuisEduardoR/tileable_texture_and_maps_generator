@@ -4,7 +4,7 @@ Made as final assigment for SCC0251 Image Processing course of ICMC-USP on 2019.
 
 ## Authors:
 
-* Gabriel de Moura Peres 
+* Amanda de Moura Peres
 * Luís Eduardo Rozante de Freitas Pereira
 
 ---
